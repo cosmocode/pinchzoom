@@ -3,6 +3,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 
     <style type="text/css">
+        body, html {
+            width: 100%;
+        }
+
         div, body, html {
             margin: 0;
             padding: 0;
@@ -15,27 +19,18 @@
             top: 0;
             background-color: coral;
             z-index: 5;
-        }
-
-        #wrapper {
-            position: fixed;
-            top: 0;
-            z-index: 2;
-
-            background-color: aquamarine;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-
-            padding-top: 50px;
+            text-align: right;
         }
 
         #content {
-            width: 900px;
+            margin-top: 100px;
+            width: 150%;
         }
+
     </style>
 
-    <script src="hammer.min.js" type="application/javascript"></script>
+    <script type="application/javascript" src="rAF.js"></script>
+
 </head>
 </html>
 <body>
@@ -44,89 +39,79 @@
     HEADER HEADER HEADER
 </div>
 
-<div id="wrapper">
-    <div id="content">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam risus ante, accumsan at venenatis eu,
-            scelerisque eu purus. Sed fermentum mattis convallis. In vel dignissim nunc, ut eleifend est. Donec ante
-            urna, fringilla in sem nec, egestas ullamcorper elit. Mauris tincidunt, est vitae pretium volutpat, leo mi
-            facilisis elit, vitae vulputate ante nisi in tortor. Suspendisse ultrices, ipsum eu sollicitudin aliquet,
-            orci odio consectetur odio, ac consectetur tortor diam id neque. Donec at ipsum eu tortor hendrerit
-            tincidunt ut ac libero. Duis tincidunt lorem nibh, rutrum feugiat sem maximus vel. Pellentesque egestas
-            tellus quis sagittis finibus. Donec in ante vehicula, efficitur enim in, venenatis mi. Donec orci erat,
-            luctus eget consequat sit amet, scelerisque sit amet dui. Vestibulum faucibus, turpis nec consequat
-            fringilla, odio neque pulvinar urna, eget pharetra eros tortor eu elit.</p>
-        <p>Pellentesque eget maximus leo, lobortis lobortis tellus. Duis a lorem lobortis, tincidunt est a, consectetur
-            felis. Phasellus id nulla turpis. Etiam urna nibh, ultricies condimentum finibus at, congue vitae magna. Ut
-            et metus vel diam viverra fermentum. Vestibulum dictum, nisi ut finibus volutpat, nisl justo ultrices odio,
-            sit amet dapibus purus massa et erat. Etiam dapibus, lacus sed laoreet finibus, risus magna mollis urna, vel
-            fringilla felis eros luctus urna. Aenean luctus nisl nunc, nec tincidunt mauris ornare vel. Sed nec urna
-            ante. Fusce condimentum dictum blandit. In nec nisi a mauris fermentum pretium. Aenean bibendum urna eget
-            nunc vehicula sagittis. In aliquam nunc sed ipsum lobortis, ut congue lacus blandit.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam risus ante, accumsan at venenatis eu,
-            scelerisque eu purus. Sed fermentum mattis convallis. In vel dignissim nunc, ut eleifend est. Donec ante
-            urna, fringilla in sem nec, egestas ullamcorper elit. Mauris tincidunt, est vitae pretium volutpat, leo mi
-            facilisis elit, vitae vulputate ante nisi in tortor. Suspendisse ultrices, ipsum eu sollicitudin aliquet,
-            orci odio consectetur odio, ac consectetur tortor diam id neque. Donec at ipsum eu tortor hendrerit
-            tincidunt ut ac libero. Duis tincidunt lorem nibh, rutrum feugiat sem maximus vel. Pellentesque egestas
-            tellus quis sagittis finibus. Donec in ante vehicula, efficitur enim in, venenatis mi. Donec orci erat,
-            luctus eget consequat sit amet, scelerisque sit amet dui. Vestibulum faucibus, turpis nec consequat
-            fringilla, odio neque pulvinar urna, eget pharetra eros tortor eu elit.</p>
-        <p>Pellentesque eget maximus leo, lobortis lobortis tellus. Duis a lorem lobortis, tincidunt est a, consectetur
-            felis. Phasellus id nulla turpis. Etiam urna nibh, ultricies condimentum finibus at, congue vitae magna. Ut
-            et metus vel diam viverra fermentum. Vestibulum dictum, nisi ut finibus volutpat, nisl justo ultrices odio,
-            sit amet dapibus purus massa et erat. Etiam dapibus, lacus sed laoreet finibus, risus magna mollis urna, vel
-            fringilla felis eros luctus urna. Aenean luctus nisl nunc, nec tincidunt mauris ornare vel. Sed nec urna
-            ante. Fusce condimentum dictum blandit. In nec nisi a mauris fermentum pretium. Aenean bibendum urna eget
-            nunc vehicula sagittis. In aliquam nunc sed ipsum lobortis, ut congue lacus blandit.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam risus ante, accumsan at venenatis eu,
-            scelerisque eu purus. Sed fermentum mattis convallis. In vel dignissim nunc, ut eleifend est. Donec ante
-            urna, fringilla in sem nec, egestas ullamcorper elit. Mauris tincidunt, est vitae pretium volutpat, leo mi
-            facilisis elit, vitae vulputate ante nisi in tortor. Suspendisse ultrices, ipsum eu sollicitudin aliquet,
-            orci odio consectetur odio, ac consectetur tortor diam id neque. Donec at ipsum eu tortor hendrerit
-            tincidunt ut ac libero. Duis tincidunt lorem nibh, rutrum feugiat sem maximus vel. Pellentesque egestas
-            tellus quis sagittis finibus. Donec in ante vehicula, efficitur enim in, venenatis mi. Donec orci erat,
-            luctus eget consequat sit amet, scelerisque sit amet dui. Vestibulum faucibus, turpis nec consequat
-            fringilla, odio neque pulvinar urna, eget pharetra eros tortor eu elit.</p>
-        <p>Pellentesque eget maximus leo, lobortis lobortis tellus. Duis a lorem lobortis, tincidunt est a, consectetur
-            felis. Phasellus id nulla turpis. Etiam urna nibh, ultricies condimentum finibus at, congue vitae magna. Ut
-            et metus vel diam viverra fermentum. Vestibulum dictum, nisi ut finibus volutpat, nisl justo ultrices odio,
-            sit amet dapibus purus massa et erat. Etiam dapibus, lacus sed laoreet finibus, risus magna mollis urna, vel
-            fringilla felis eros luctus urna. Aenean luctus nisl nunc, nec tincidunt mauris ornare vel. Sed nec urna
-            ante. Fusce condimentum dictum blandit. In nec nisi a mauris fermentum pretium. Aenean bibendum urna eget
-            nunc vehicula sagittis. In aliquam nunc sed ipsum lobortis, ut congue lacus blandit.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam risus ante, accumsan at venenatis eu,
-            scelerisque eu purus. Sed fermentum mattis convallis. In vel dignissim nunc, ut eleifend est. Donec ante
-            urna, fringilla in sem nec, egestas ullamcorper elit. Mauris tincidunt, est vitae pretium volutpat, leo mi
-            facilisis elit, vitae vulputate ante nisi in tortor. Suspendisse ultrices, ipsum eu sollicitudin aliquet,
-            orci odio consectetur odio, ac consectetur tortor diam id neque. Donec at ipsum eu tortor hendrerit
-            tincidunt ut ac libero. Duis tincidunt lorem nibh, rutrum feugiat sem maximus vel. Pellentesque egestas
-            tellus quis sagittis finibus. Donec in ante vehicula, efficitur enim in, venenatis mi. Donec orci erat,
-            luctus eget consequat sit amet, scelerisque sit amet dui. Vestibulum faucibus, turpis nec consequat
-            fringilla, odio neque pulvinar urna, eget pharetra eros tortor eu elit.</p>
-        <p>Pellentesque eget maximus leo, lobortis lobortis tellus. Duis a lorem lobortis, tincidunt est a, consectetur
-            felis. Phasellus id nulla turpis. Etiam urna nibh, ultricies condimentum finibus at, congue vitae magna. Ut
-            et metus vel diam viverra fermentum. Vestibulum dictum, nisi ut finibus volutpat, nisl justo ultrices odio,
-            sit amet dapibus purus massa et erat. Etiam dapibus, lacus sed laoreet finibus, risus magna mollis urna, vel
-            fringilla felis eros luctus urna. Aenean luctus nisl nunc, nec tincidunt mauris ornare vel. Sed nec urna
-            ante. Fusce condimentum dictum blandit. In nec nisi a mauris fermentum pretium. Aenean bibendum urna eget
-            nunc vehicula sagittis. In aliquam nunc sed ipsum lobortis, ut congue lacus blandit.</p>
-    </div>
+
+<div id="content">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam risus ante, accumsan at venenatis eu,
+        scelerisque eu purus. Sed fermentum mattis convallis. In vel dignissim nunc, ut eleifend est. Donec ante
+        urna, fringilla in sem nec, egestas ullamcorper elit. Mauris tincidunt, est vitae pretium volutpat, leo mi
+        facilisis elit, vitae vulputate ante nisi in tortor. Suspendisse ultrices, ipsum eu sollicitudin aliquet,
+        orci odio consectetur odio, ac consectetur tortor diam id neque. Donec at ipsum eu tortor hendrerit
+        tincidunt ut ac libero. Duis tincidunt lorem nibh, rutrum feugiat sem maximus vel. Pellentesque egestas
+        tellus quis sagittis finibus. Donec in ante vehicula, efficitur enim in, venenatis mi. Donec orci erat,
+        luctus eget consequat sit amet, scelerisque sit amet dui. Vestibulum faucibus, turpis nec consequat
+        fringilla, odio neque pulvinar urna, eget pharetra eros tortor eu elit.</p>
+    <p>Pellentesque eget maximus leo, lobortis lobortis tellus. Duis a lorem lobortis, tincidunt est a, consectetur
+        felis. Phasellus id nulla turpis. Etiam urna nibh, ultricies condimentum finibus at, congue vitae magna. Ut
+        et metus vel diam viverra fermentum. Vestibulum dictum, nisi ut finibus volutpat, nisl justo ultrices odio,
+        sit amet dapibus purus massa et erat. Etiam dapibus, lacus sed laoreet finibus, risus magna mollis urna, vel
+        fringilla felis eros luctus urna. Aenean luctus nisl nunc, nec tincidunt mauris ornare vel. Sed nec urna
+        ante. Fusce condimentum dictum blandit. In nec nisi a mauris fermentum pretium. Aenean bibendum urna eget
+        nunc vehicula sagittis. In aliquam nunc sed ipsum lobortis, ut congue lacus blandit.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam risus ante, accumsan at venenatis eu,
+        scelerisque eu purus. Sed fermentum mattis convallis. In vel dignissim nunc, ut eleifend est. Donec ante
+        urna, fringilla in sem nec, egestas ullamcorper elit. Mauris tincidunt, est vitae pretium volutpat, leo mi
+        facilisis elit, vitae vulputate ante nisi in tortor. Suspendisse ultrices, ipsum eu sollicitudin aliquet,
+        orci odio consectetur odio, ac consectetur tortor diam id neque. Donec at ipsum eu tortor hendrerit
+        tincidunt ut ac libero. Duis tincidunt lorem nibh, rutrum feugiat sem maximus vel. Pellentesque egestas
+        tellus quis sagittis finibus. Donec in ante vehicula, efficitur enim in, venenatis mi. Donec orci erat,
+        luctus eget consequat sit amet, scelerisque sit amet dui. Vestibulum faucibus, turpis nec consequat
+        fringilla, odio neque pulvinar urna, eget pharetra eros tortor eu elit.</p>
+    <p>Pellentesque eget maximus leo, lobortis lobortis tellus. Duis a lorem lobortis, tincidunt est a, consectetur
+        felis. Phasellus id nulla turpis. Etiam urna nibh, ultricies condimentum finibus at, congue vitae magna. Ut
+        et metus vel diam viverra fermentum. Vestibulum dictum, nisi ut finibus volutpat, nisl justo ultrices odio,
+        sit amet dapibus purus massa et erat. Etiam dapibus, lacus sed laoreet finibus, risus magna mollis urna, vel
+        fringilla felis eros luctus urna. Aenean luctus nisl nunc, nec tincidunt mauris ornare vel. Sed nec urna
+        ante. Fusce condimentum dictum blandit. In nec nisi a mauris fermentum pretium. Aenean bibendum urna eget
+        nunc vehicula sagittis. In aliquam nunc sed ipsum lobortis, ut congue lacus blandit.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam risus ante, accumsan at venenatis eu,
+        scelerisque eu purus. Sed fermentum mattis convallis. In vel dignissim nunc, ut eleifend est. Donec ante
+        urna, fringilla in sem nec, egestas ullamcorper elit. Mauris tincidunt, est vitae pretium volutpat, leo mi
+        facilisis elit, vitae vulputate ante nisi in tortor. Suspendisse ultrices, ipsum eu sollicitudin aliquet,
+        orci odio consectetur odio, ac consectetur tortor diam id neque. Donec at ipsum eu tortor hendrerit
+        tincidunt ut ac libero. Duis tincidunt lorem nibh, rutrum feugiat sem maximus vel. Pellentesque egestas
+        tellus quis sagittis finibus. Donec in ante vehicula, efficitur enim in, venenatis mi. Donec orci erat,
+        luctus eget consequat sit amet, scelerisque sit amet dui. Vestibulum faucibus, turpis nec consequat
+        fringilla, odio neque pulvinar urna, eget pharetra eros tortor eu elit.</p>
+    <p>Pellentesque eget maximus leo, lobortis lobortis tellus. Duis a lorem lobortis, tincidunt est a, consectetur
+        felis. Phasellus id nulla turpis. Etiam urna nibh, ultricies condimentum finibus at, congue vitae magna. Ut
+        et metus vel diam viverra fermentum. Vestibulum dictum, nisi ut finibus volutpat, nisl justo ultrices odio,
+        sit amet dapibus purus massa et erat. Etiam dapibus, lacus sed laoreet finibus, risus magna mollis urna, vel
+        fringilla felis eros luctus urna. Aenean luctus nisl nunc, nec tincidunt mauris ornare vel. Sed nec urna
+        ante. Fusce condimentum dictum blandit. In nec nisi a mauris fermentum pretium. Aenean bibendum urna eget
+        nunc vehicula sagittis. In aliquam nunc sed ipsum lobortis, ut congue lacus blandit.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam risus ante, accumsan at venenatis eu,
+        scelerisque eu purus. Sed fermentum mattis convallis. In vel dignissim nunc, ut eleifend est. Donec ante
+        urna, fringilla in sem nec, egestas ullamcorper elit. Mauris tincidunt, est vitae pretium volutpat, leo mi
+        facilisis elit, vitae vulputate ante nisi in tortor. Suspendisse ultrices, ipsum eu sollicitudin aliquet,
+        orci odio consectetur odio, ac consectetur tortor diam id neque. Donec at ipsum eu tortor hendrerit
+        tincidunt ut ac libero. Duis tincidunt lorem nibh, rutrum feugiat sem maximus vel. Pellentesque egestas
+        tellus quis sagittis finibus. Donec in ante vehicula, efficitur enim in, venenatis mi. Donec orci erat,
+        luctus eget consequat sit amet, scelerisque sit amet dui. Vestibulum faucibus, turpis nec consequat
+        fringilla, odio neque pulvinar urna, eget pharetra eros tortor eu elit.</p>
+    <p>Pellentesque eget maximus leo, lobortis lobortis tellus. Duis a lorem lobortis, tincidunt est a, consectetur
+        felis. Phasellus id nulla turpis. Etiam urna nibh, ultricies condimentum finibus at, congue vitae magna. Ut
+        et metus vel diam viverra fermentum. Vestibulum dictum, nisi ut finibus volutpat, nisl justo ultrices odio,
+        sit amet dapibus purus massa et erat. Etiam dapibus, lacus sed laoreet finibus, risus magna mollis urna, vel
+        fringilla felis eros luctus urna. Aenean luctus nisl nunc, nec tincidunt mauris ornare vel. Sed nec urna
+        ante. Fusce condimentum dictum blandit. In nec nisi a mauris fermentum pretium. Aenean bibendum urna eget
+        nunc vehicula sagittis. In aliquam nunc sed ipsum lobortis, ut congue lacus blandit.</p>
 </div>
 
+
+
+<script type="application/javascript" src="script.js"></script>
 <script type="application/javascript">
 
-    var hammertime = new Hammer(document.getElementById('wrapper'), {});
-    hammertime.get('pinch').set({enable: true});
-    hammertime.get('pan').set({direction: Hammer.DIRECTION_ALL});
-    hammertime.on('pinch', function (e) {
-        document.getElementById('content').style.transform = 'scale(' + e.scale + ', ' + e.scale + ')';
-
-    });
-    hammertime.on('pan', function (e) {
-        var wrapper = document.getElementById('wrapper');
-        wrapper.scrollLeft -= e.deltaX;
-        wrapper.scrollTop -= e.deltaY;
-    });
 
 </script>
 
