@@ -1,11 +1,14 @@
 /**
- * Makes the given dom node zoomable within it's parent by pinch
+ * Makes the given dom node zoomable within its parent by pinch gesture
  *
  * @param {Node} obj The DOM node to pinch zoom, needs to have a scrollable parent node
  * @param {[Object]} opts Optional options
  * @constructor
  */
 var PinchZoom = function (obj, opts) {
+
+    var prefixedTransform='transform';
+
     /**
      * default options
      */
@@ -154,7 +157,7 @@ var PinchZoom = function (obj, opts) {
          * Apply scaling and translate (this basically moves the origin to 0,0), then
          * the outer container is scrolled to make up for the translation
          */
-        obj.style.transform = 'scale(' + input.currentScale + ') translate(' + transX + 'px, ' + transY + 'px)';
+        obj.style[prefixedTransform] = 'scale(' + input.currentScale + ') translate(' + transX + 'px, ' + transY + 'px)';
         if (transX > 0) obj.parentNode.scrollLeft = input.scrollLeft + transX;
         if (transY > 0) obj.parentNode.scrollTop = input.scrollTop + transY;
     }
@@ -162,11 +165,24 @@ var PinchZoom = function (obj, opts) {
     /*
      * Main
      */
+
+    // merge options
     if (opts) for (var attr in opts) {
         if (opts.hasOwnProperty(attr)) {
             options[attr] = opts[attr];
         }
     }
+
+    // vendor prefixes if needed
+    var vendors = ['ms', 'moz', 'webkit', 'o'];
+    for(var x = 0; x < vendors.length; ++x) {
+        if (vendors[x] + 'Transform' in document.body.style) {
+            prefixedTransform = vendors[x] + 'Transform';
+            break;
+        }
+    }
+
+    // attach listeners
     obj.addEventListener('touchstart', onTouchStart);
     obj.addEventListener('touchmove', onTouchMove);
     obj.addEventListener('touchend', onTouchEnd);
