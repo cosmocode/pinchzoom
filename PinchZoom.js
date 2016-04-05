@@ -1,13 +1,14 @@
 /**
  * Makes the given dom node zoomable within its parent by pinch gesture
  *
+ * @link https://github.com/cosmocode/pinchzoom
  * @param {Node} obj The DOM node to pinch zoom, needs to have a scrollable parent node
  * @param {[Object]} opts Optional options
  * @constructor
  */
 var PinchZoom = function (obj, opts) {
 
-    var prefixedTransform='transform';
+    var prefixedTransform = 'transform';
 
     /**
      * default options
@@ -175,7 +176,7 @@ var PinchZoom = function (obj, opts) {
 
     // vendor prefixes if needed
     var vendors = ['ms', 'moz', 'webkit', 'o'];
-    for(var x = 0; x < vendors.length; ++x) {
+    for (var x = 0; x < vendors.length; ++x) {
         if (vendors[x] + 'Transform' in document.body.style) {
             prefixedTransform = vendors[x] + 'Transform';
             break;
