@@ -1,12 +1,21 @@
-(function () {
-
+/**
+ * Makes the given dom node zoomable within it's parent by pinch
+ *
+ * @param {Node} obj The DOM node to pinch zoom, needs to have a scrollable parent node
+ * @param {[Object]} opts Optional options
+ * @constructor
+ */
+var PinchZoom = function (obj, opts) {
+    /**
+     * default options
+     */
     var options = {
         minScale: 0.5,
         maxScale: 3
     };
 
     /**
-     * Store the input data and provide some function on it
+     * Store the input data and provide some functions on it
      */
     var input = {
         isPinching: true, // are we pinching right now?
@@ -17,8 +26,8 @@
         y2: 0, // finger 2 Y
         startScale: 1.0, // initial scale
         currentScale: 1.0, // current scale,
-        scrollTop: 0,
-        scrollLeft: 0,
+        scrollTop: 0, // scroll postion
+        scrollLeft: 0, // scroll position
 
         /**
          * store the finger positions from the given event
@@ -57,7 +66,6 @@
         }
     };
 
-
     /**
      * Begin the pinch handling
      *
@@ -68,15 +76,11 @@
         event.preventDefault();
         event.stopPropagation();
 
-        console.log(attach.offsetWidth, attach.offsetHeight, attach.offsetLeft, attach.offsetTop);
-        console.log(attach.getBoundingClientRect());
-
-
         input.storeFingerPosition(event);
         input.startDistance = input.calcFingerDistance();
         input.isPinching = true;
-        input.scrollTop = attach.parentNode.scrollTop;
-        input.scrollLeft = attach.parentNode.scrollLeft;
+        input.scrollTop = obj.parentNode.scrollTop;
+        input.scrollLeft = obj.parentNode.scrollLeft;
     }
 
     /**
@@ -102,10 +106,6 @@
         event.preventDefault();
         event.stopPropagation();
         input.reset();
-
-
-        console.log(attach.offsetWidth, attach.offsetHeight, attach.offsetLeft, attach.offsetTop);
-        console.log(attach.getBoundingClientRect());
     }
 
     /**
@@ -141,32 +141,34 @@
          * Scaling happens from center of the element. Here we calculate how much of it
          * scaled out of the original boundary
          */
-        var transX = ((attach.offsetWidth * input.currentScale) / 2) - (attach.offsetWidth / 2);
-        var transY = ((attach.offsetHeight * input.currentScale) / 2) - (attach.offsetHeight / 2);
+        var transX = ((obj.offsetWidth * input.currentScale) / 2) - (obj.offsetWidth / 2);
+        var transY = ((obj.offsetHeight * input.currentScale) / 2) - (obj.offsetHeight / 2);
         /*
          * translates are influenced by the scaling, so we remove that from the
          * calculated value
          */
-        transX = transX/input.currentScale;
-        transY = transY/input.currentScale;
+        transX = transX / input.currentScale;
+        transY = transY / input.currentScale;
 
         /*
          * Apply scaling and translate (this basically moves the origin to 0,0), then
          * the outer container is scrolled to make up for the translation
          */
-        attach.style.transform = 'scale(' + input.currentScale + ') translate(' + transX + 'px, ' + transY + 'px)';
-        attach.parentNode.scrollTop = input.scrollTop + transY;
-        attach.parentNode.scrollLeft = input.scrollLeft + transX;
+        obj.style.transform = 'scale(' + input.currentScale + ') translate(' + transX + 'px, ' + transY + 'px)';
+        if (transX > 0) obj.parentNode.scrollLeft = input.scrollLeft + transX;
+        if (transY > 0) obj.parentNode.scrollTop = input.scrollTop + transY;
     }
 
     /*
      * Main
      */
-    var attach = document.getElementById('content');
-    attach.addEventListener('touchstart', onTouchStart);
-    attach.addEventListener('touchmove', onTouchMove);
-    attach.addEventListener('touchend', onTouchEnd);
+    if (opts) for (var attr in opts) {
+        if (opts.hasOwnProperty(attr)) {
+            options[attr] = opts[attr];
+        }
+    }
+    obj.addEventListener('touchstart', onTouchStart);
+    obj.addEventListener('touchmove', onTouchMove);
+    obj.addEventListener('touchend', onTouchEnd);
     requestAnimationFrame(onAnimationFrame);
-
-
-})();
+};
