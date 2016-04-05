@@ -11,12 +11,23 @@ create a device fixed header, while still having a scrollable and zoomable conte
 ## Usage
 
 The PinchZoom function expects a DOM object as a first parameter - that node needs to be in a scrollable container. That
-can be the document body itself (like in the demo) or a DOM node with ''overflow: auto''. A second parameter is optional
-you can use it to set the minimum and maximum scale:
+can be the document body itself (like in the demo) or any other DOM node. Be sure to explicitly set ''overflow: auto''
+on that node or you will have problems in iOS 9!
+
+Your document should disable all Browser zooming gestures:
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+```
+
+A second parameter is optional you can use it to set the minimum and maximum scale:
 
 ```javascript
 PinchZoom(document.getElementById('content', {minScale: 0.5, maxScale: 3}); 
 ```
+
+You can also set a ``debug`` function which will be passed the internal input object - to see what the current state
+is. See the demo for an example.
 
 ## License (MIT)
 

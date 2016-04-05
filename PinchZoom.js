@@ -15,7 +15,8 @@ var PinchZoom = function (obj, opts) {
      */
     var options = {
         minScale: 0.5,
-        maxScale: 3
+        maxScale: 3,
+        debug: null
     };
 
     /**
@@ -138,8 +139,6 @@ var PinchZoom = function (obj, opts) {
         if (input.currentScale < options.minScale) input.currentScale = minScale;
         if (input.currentScale > options.maxScale) input.currentScale = maxScale;
 
-        //FIXME prefix if needed
-
         /*
          * OffsetWidth and height are not scaled and stay in the original size.
          * Scaling happens from center of the element. Here we calculate how much of it
@@ -161,6 +160,8 @@ var PinchZoom = function (obj, opts) {
         obj.style[prefixedTransform] = 'scale(' + input.currentScale + ') translate(' + transX + 'px, ' + transY + 'px)';
         if (transX > 0) obj.parentNode.scrollLeft = input.scrollLeft + transX;
         if (transY > 0) obj.parentNode.scrollTop = input.scrollTop + transY;
+
+        if(options.debug) options.debug(input);
     }
 
     /*
