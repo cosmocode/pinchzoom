@@ -136,8 +136,8 @@ var PinchZoom = function (obj, opts) {
          */
         var scalePixelChange = newDistance - input.startDistance;
         input.currentScale = input.startScale + scalePixelChange * 0.01;
-        if (input.currentScale < options.minScale) input.currentScale = minScale;
-        if (input.currentScale > options.maxScale) input.currentScale = maxScale;
+        if (input.currentScale < options.minScale) input.currentScale = options.minScale;
+        if (input.currentScale > options.maxScale) input.currentScale = options.maxScale;
 
         /*
          * OffsetWidth and height are not scaled and stay in the original size.
